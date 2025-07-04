@@ -7,10 +7,12 @@ import Menu ,  {loader as menuLoader} from './Features/menu/Menu'
 import Cart from './Features/cart/Cart'
 import CreateOrder from './Features/order/CreateOrder'
 import Order from './Features/order/Order'
+import Error from "./ui/Error.jsx"
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error/>,
     children: [
       {
         path :"/",
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
         path: "menu",
         element: <Menu />,
         loader : menuLoader,
+        errorElement: <Error/>,
       },
       {
         path: "cart",
