@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+import { formatCurrency } from "../../uitls/helpers";
+
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
