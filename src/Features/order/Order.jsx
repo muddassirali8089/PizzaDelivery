@@ -6,10 +6,6 @@ import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
 import { calcMinutesLeft, formatCurrency, formatDate } from "../../uitls/helpers";
 
-
-
-
-
 // const order = {
 //   id: "ABCDEF",
 //   customer: "Jonas",
