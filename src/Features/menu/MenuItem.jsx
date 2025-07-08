@@ -1,12 +1,19 @@
-/* eslint-disable no-unused-vars */
 import Button from '../../ui/Button';
 import { formatCurrency } from '../../utils/helpers';
-import { addItem } from '../../features/cart/cartSlice';
+import { addItem, getCart, getCurrentQuantityById } from '../../features/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import DeleteItem from '../cart/DeleteItem';
 
-import { useDispatch } from 'react-redux';
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
   const dispatch = useDispatch();
+
+  const currentQuantity = useSelector((state) => getCurrentQuantityById(id)(state));
+  const isInCart = currentQuantity > 0;
+
+  const cart = useSelector(getCart);
+
   const newItem = {
     pizzaId: id,
     name,
@@ -14,7 +21,7 @@ function MenuItem({ pizza }) {
     unitPrice,
   };
 
-  function handleAddItemToCart(newItem) {
+  function handleAddItemToCart() {
     dispatch(addItem(newItem));
   }
 
@@ -34,14 +41,17 @@ function MenuItem({ pizza }) {
           {!soldOut ? (
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
-            <p className="text-sm font-medium uppercase text-stone-500">
-              Sold out
-            </p>
+            <p className="text-sm font-medium uppercase text-stone-500">Sold out</p>
           )}
-          {!soldOut?
-          <Button onClick={() => handleAddItemToCart(newItem)} type="small">
-            Add to cart
-          </Button> : null}
+
+          {!soldOut && (
+            <>
+              {isInCart && <DeleteItem pizzaId={id} />}
+              <Button onClick={handleAddItemToCart} type="small">
+                Add to cart
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </li>
