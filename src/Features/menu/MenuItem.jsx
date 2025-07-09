@@ -59,7 +59,6 @@ function MenuItem({ pizza }) {
           <div className='flex items-center gap-3 sm:gap-8'>
             <UpdatePizzaItemQuantity  pizzaId={id} currentQuantity = {currentQuantity}/>
             <DeleteItem pizzaId={id} />
-
           </div>  
           }
           {!soldOut && !isInCart && (
