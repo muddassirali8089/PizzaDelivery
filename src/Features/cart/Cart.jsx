@@ -34,7 +34,7 @@ function Cart() {
             <Button to="/order/new" type="primary">
               Order pizzas
             </Button>
-            <Button type="secondary" onClick={() => dispatch(clearCart())}>Clear cart</Button> :
+            <Button type="secondary" onClick={() => dispatch(clearCart())}>Clear cart</Button> 
           </div>
         </>
       ) : (

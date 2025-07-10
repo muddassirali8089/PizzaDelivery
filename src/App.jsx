@@ -9,7 +9,7 @@ import CreateOrder, {
 } from './Features/order/CreateOrder';
 import Order, { loader as orderLoader } from './features/order/Order';
 import AppLayout from './ui/AppLayout';
-import ProtectedRoute from './features/auth/ProtectedRoute';
+
 
 const router = createBrowserRouter([
   {
@@ -23,9 +23,9 @@ const router = createBrowserRouter([
       {
         path: '/menu',
         element: (
-          <ProtectedRoute>
+         
             <Menu />
-          </ProtectedRoute>
+          
         ),
         loader: menuLoader,
         errorElement: <Error />,
@@ -33,26 +33,26 @@ const router = createBrowserRouter([
       { 
         path: '/cart', 
         element: (
-          <ProtectedRoute>
+       
             <Cart />
-          </ProtectedRoute>
+       
         ) 
       },
       {
         path: '/order/new',
         element: (
-          <ProtectedRoute>
+        
             <CreateOrder />
-          </ProtectedRoute>
+    
         ),
         action: createOrderAction,
       },
       {
         path: '/order/:orderId',
         element: (
-          <ProtectedRoute>
+        
             <Order />
-          </ProtectedRoute>
+      
         ),
         loader: orderLoader,
         errorElement: <Error />,
