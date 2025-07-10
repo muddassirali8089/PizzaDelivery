@@ -14,8 +14,6 @@ function CreateUser() {
     if(username.trim() === "") return
     dispatch(updateName(username));
     navigate('/menu');
-
-    
   }
 
   return (

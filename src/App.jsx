@@ -9,12 +9,12 @@ import CreateOrder, {
 } from './Features/order/CreateOrder';
 import Order, { loader as orderLoader } from './features/order/Order';
 import AppLayout from './ui/AppLayout';
+import ProtectedRoute from './features/auth/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     errorElement: <Error />,
-
     children: [
       {
         path: '/',
@@ -22,19 +22,38 @@ const router = createBrowserRouter([
       },
       {
         path: '/menu',
-        element: <Menu />,
+        element: (
+          <ProtectedRoute>
+            <Menu />
+          </ProtectedRoute>
+        ),
         loader: menuLoader,
         errorElement: <Error />,
       },
-      { path: '/cart', element: <Cart /> },
+      { 
+        path: '/cart', 
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ) 
+      },
       {
         path: '/order/new',
-        element: <CreateOrder />,
+        element: (
+          <ProtectedRoute>
+            <CreateOrder />
+          </ProtectedRoute>
+        ),
         action: createOrderAction,
       },
       {
         path: '/order/:orderId',
-        element: <Order />,
+        element: (
+          <ProtectedRoute>
+            <Order />
+          </ProtectedRoute>
+        ),
         loader: orderLoader,
         errorElement: <Error />,
       },
