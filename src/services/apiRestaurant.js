@@ -52,3 +52,18 @@ export async function updateOrder(id, updateObj) {
     throw Error("Failed updating your order");
   }
 }
+
+
+export async function getAllOrders() {
+  try {
+    const res = await fetch(`${API_URL}/orders`); // Note the plural '/orders'
+    
+    if (!res.ok) throw Error("Failed fetching orders");
+    
+    const { data } = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw Error("Could not load orders. Please try again later.");
+  }
+}

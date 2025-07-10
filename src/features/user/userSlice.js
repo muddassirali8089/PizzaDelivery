@@ -12,7 +12,7 @@ const initialState = {
   username: '',
   status : "idle",
   position : {},
-  address:{},
+  address:"",
   error : ""
 };
 
@@ -36,7 +36,7 @@ export const fetchAddress = createAsyncThunk('user/fetchAddress', async function
     // 3) Return data
     return { position, address };
   } catch (error) {
-    throw new Error("Failed to fetch address");
+    throw new Error("There was a problem getting your address make sure that please fill the form");
   }
 });
 
