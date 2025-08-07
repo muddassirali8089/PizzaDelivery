@@ -46,7 +46,7 @@ const userSlice = createSlice({
   reducers: {
     updateName(state, action) {
       state.username = action.payload;
-      state.isAuthenticated = !!action.payload;
+      
     },
     logout(state) {
       state.username = '';
